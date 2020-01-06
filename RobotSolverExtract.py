@@ -382,7 +382,7 @@ def solve(username):
 if __name__ == "__main__":
     username = ''
     print(sys.argv[1])
-    if sys.argv[1] == 'post':
+    if sys.argv[1] == '--post':
         username = input("What is the username to submit: ")
     answer = solve(username)
     print(answer)
