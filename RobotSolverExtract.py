@@ -6,6 +6,8 @@ import model
 import http.client
 #/home/kwazinator/PycharmProjects/robits/venv/lib/python3.5/site-packages/selenium
 from selenium import webdriver #http://stanford.edu/~mgorkove/cgi-bin/rpython_tutorials/Scraping_a_Webpage_Rendered_by_Javascript_Using_Python.php
+from selenium.webdriver.chrome.options import Options
+import os
 
 SHAPES = ['H', 'C', 'T', 'S']
 
@@ -195,7 +197,14 @@ def getBoards(walls,robits,goals):
 
 
 def getCanvasData():
-    browser = webdriver.Chrome()
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--window-size=1920x1080")
+    
+    # download the chrome driver from https://sites.google.com/a/chromium.org/chromedriver/downloads and put it in the
+    # current directory
+    #chrome_driver = os.getcwd() +"\\chromedriver.exe"
+    browser = webdriver.Chrome(chrome_options=chrome_options
     getURL = "http://www.robotreboot.com/challenge"
     browser.get(getURL)
     javascript = "canv = document.querySelector(\"canvas\"); canv2D = canv.getContext(\"2d\"); return canv2D.getImageData(0,0,canv.width,canv.height);"
