@@ -204,7 +204,7 @@ def getCanvasData():
     # download the chrome driver from https://sites.google.com/a/chromium.org/chromedriver/downloads and put it in the
     # current directory
     #chrome_driver = os.getcwd() +"\\chromedriver.exe"
-    browser = webdriver.Chrome(chrome_options=chrome_options
+    browser = webdriver.Chrome(chrome_options=chrome_options)
     getURL = "http://www.robotreboot.com/challenge"
     browser.get(getURL)
     javascript = "canv = document.querySelector(\"canvas\"); canv2D = canv.getContext(\"2d\"); return canv2D.getImageData(0,0,canv.width,canv.height);"
