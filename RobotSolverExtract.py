@@ -9,6 +9,7 @@ from selenium import webdriver #http://stanford.edu/~mgorkove/cgi-bin/rpython_tu
 from selenium.webdriver.chrome.options import Options
 from pyvirtualdisplay import Display
 import os
+import sys
 
 SHAPES = ['H', 'C', 'T', 'S']
 
@@ -329,7 +330,7 @@ def placeGoals(grid,goals):
 def callback():
     return
 
-def solve():
+def solve(username):
     boardData = getCanvasData()
     walls = getWalls(boardData)
     data = getConfig()
@@ -374,10 +375,15 @@ def solve():
     for x, tokenz in enumerate(listTokens):
         paths[x] = ricochet.search(model.Game(grid=grid, robots=robits, col=colorz, token=tokenz))
     solutions = getSolution(paths)
+    if username is not '':
+        print('will do something')
     return formatmessage(solutions)
 
 if __name__ == "__main__":
-    answer = solve()
+    username = ''
+    if sys.argv[0] == 'post':
+        username = input("What is the username to submit: ")
+    answer = solve(username)
     print(answer)
     
 
