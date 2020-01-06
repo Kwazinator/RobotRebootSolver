@@ -381,6 +381,7 @@ def solve(username):
 
 if __name__ == "__main__":
     username = ''
+    print(sys.argv[0])
     if sys.argv[0] == 'post':
         username = input("What is the username to submit: ")
     answer = solve(username)
