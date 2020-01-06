@@ -198,16 +198,14 @@ def getBoards(walls,robits,goals):
 
 
 def getCanvasData():
-    #chrome_options = Options()
-    #chrome_options.add_argument("--headless")
-    #chrome_options.add_argument("--window-size=1920x1080")
-    
+    chrome_options = Options()
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--no-sandbox')
+    chrome_options.add_argument('--disable-dev-shm-usage')
     # download the chrome driver from https://sites.google.com/a/chromium.org/chromedriver/downloads and put it in the
     # current directory
     #chrome_driver = os.getcwd() +"\\chromedriver.exe"
-    display = Display(visible=0, size=(800, 800))  
-    display.start()
-    browser = webdriver.Chrome()
+    browser = webdriver.Chrome(chrome_options = chrome_options)
     getURL = "http://www.robotreboot.com/challenge"
     browser.get(getURL)
     javascript = "canv = document.querySelector(\"canvas\"); canv2D = canv.getContext(\"2d\"); return canv2D.getImageData(0,0,canv.width,canv.height);"
