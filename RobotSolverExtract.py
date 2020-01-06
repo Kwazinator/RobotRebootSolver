@@ -366,7 +366,10 @@ def solve():
     solutions = getSolution(paths)
     return formatmessage(solutions)
 
-
+if __name__ == "__main__":
+    answer = solve()
+    print(answer)
+    
 
 
 
